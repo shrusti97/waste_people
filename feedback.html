@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Respark - Feedback</title>
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f4f6f9;
+    }
+
+   
+
+    .container{
+      background:white;
+      width:400px;
+      margin:40px auto;
+      padding:25px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    textarea{
+      width:100%;
+      padding:10px;
+      border-radius:6px;
+      border:1px solid #ccc;
+      margin-top:10px;
+    }
+
+    button{
+      margin-top:15px;
+      padding:10px;
+      width:100%;
+      background:#1e88e5;
+      color:white;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#1565c0;
+    }
+
+    .feedback-list{
+      margin-top:20px;
+    }
+
+    .feedback-item{
+      background:#f1f1f1;
+      padding:10px;
+      margin-top:10px;
+      border-radius:6px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+<nav>
+  <h1>Respark</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="submit.html">Submit Waste</a></li>
+    <li><a href="feedback.html">Feedback</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <h2>Give Feedback</h2>
+
+  <textarea id="feedbackInput" placeholder="Enter your feedback"></textarea>
+
+  <button onclick="addFeedback()">Submit Feedback</button>
+
+  <div class="feedback-list" id="feedbackList">
+    <h3>User Feedback:</h3>
+  </div>
+
+</div>
+
+<script>
+
+function addFeedback(){
+
+  let text=document.getElementById("feedbackInput").value;
+
+  if(text===""){
+    alert("Please enter feedback");
+    return;
+  }
+
+  let feedbacks=JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+  feedbacks.push(text);
+
+  localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+  document.getElementById("feedbackInput").value="";
+
+  showFeedback();
+
+}
+
+function showFeedback(){
+
+  let feedbacks=JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+  let list=document.getElementById("feedbackList");
+
+  list.innerHTML="<h3>User Feedback:</h3>";
+
+  feedbacks.forEach(function(item){
+
+    let div=document.createElement("div");
+
+    div.className="feedback-item";
+
+    div.innerText=item;
+
+    list.appendChild(div);
+
+  });
+
+}
+
+showFeedback();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Respark - E-Waste</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- INTERNAL CSS -->
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+    }
+
+   
+
+    /* FORM BOX */
+    .form-box {
+      background: white;
+      width: 400px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #1e88e5;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1565c0;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h1>Respark</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="submit.html">Submit Waste</a></li>
+    <li><a href="feedback.html">Feedback</a></li>
+  </ul>
+</nav>
+
+<!-- FORM -->
+<div class="form-box">
+
+  <h2>E-Waste Collection Form</h2>
+
+  <form id="ewasteForm">
+
+    <label>Upload Item Image</label>
+    <input type="file" name="image">
+
+    <label>Item Name</label>
+    <input type="text" name="item_name" required>
+
+    <label>Type</label>
+    <select name="type" required>
+      <option value="">Select Type</option>
+      <option>Mobile</option>
+      <option>Laptop</option>
+      <option>TV</option>
+      <option>Battery</option>
+      <option>Charger</option>
+      <option>Other</option>
+    </select>
+
+    <label>Quantity</label>
+    <select name="qty" required>
+      <option value="">Select Quantity</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5+</option>
+    </select>
+
+    <label>Expected Cost (₹)</label>
+    <select name="cost" required>
+      <option value="">Select Price</option>
+      <option>1000</option>
+      <option>2000</option>
+      <option>3000</option>
+      <option>4000</option>
+      <option>5000</option>
+      <option>6000</option>
+      <option>7000</option>
+      <option>8000</option>
+      <option>9000</option>
+      <option>10000</option>
+    </select>
+
+    <label>Pickup Address</label>
+    <textarea name="address" required></textarea>
+
+    <label>Select Your Free Time</label>
+    <input type="time" name="time" required>
+
+    <label>Select Date</label>
+    <input type="date" name="date" required>
+
+    <label>Phone Number</label>
+    <input type="tel" name="phone" pattern="[0-9]{10}" required>
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+</div>
+
+<!-- SIMPLE JAVASCRIPT -->
+<script>
+
+function logout() {
+  alert("Logged out successfully!");
+}
+
+// Optional: form submit message
+document.getElementById("ewasteForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  alert("Form submitted successfully!");
+  this.reset();
+});
+
+</script>
+
+</body>
+</html>
